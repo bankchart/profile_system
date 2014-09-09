@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<!--profile.html-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel='stylesheet' type='text/css' href='css/profile.css' />
+  <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+    <title>Profile</title>
+
+  </head>
+  <body id ='mybody' bgcolor='#f2f2eb' onload='isUser_Online()'>
+    <div id='container'>
+      <div id='base-header'>
+        <div id='header'>
+          <label id='profile'style='float: left;'>
+            PROFILE
+          </label>
+          <div id='menu_sortable' class='menu' style='text-align: right;'>
+            <div class='nmenu' onmouseover='opacity("aboutme")' onmouseout='opacity("out")'>&nbsp;About&nbsp;Me&nbsp;</div>
+<div>|</div><div class='nmenu' onmouseover='opacity("edu")' onmouseout='opacity("out")' >&nbsp;Education&nbsp;</div>
+<div>|</div><div class='nmenu' onmouseover='opacity("fav")' onmouseout='opacity("out")' >&nbsp;Favorite&nbsp;</div>
+<div>|</div><div class='nmenu' onmouseover='opacity("lsk")' onmouseout='opacity("out")' >&nbsp;Little&nbsp;Skill&nbsp;</div>
+      <div>|</div> 
+            <button onclick='editDetail();' style='color:#000;'>Edit</button> 
+            <div>|</div>
+            <button onclick='logout();' style='color:#000;'>Logout</button>
+          </div>
+        </div>
+        <!--content-->
+
+        <div id='content'>
+          <!--label id='mprofile' style='font-family: thaisanslite; color:
+          orange; font-size: 30px; font-weight: bold;
+          text-shadow: 0 0 0.2em #003366, 0 0 0.2em #87F,
+          0 0 0.2em #87F;'-->
+	  
+	<div id ="mprofile" style='font-family: thaisanslite; color:
+          orange; font-size: 30px; font-weight: bold;
+          text-shadow: 0 0 0.2em #003366, 0 0 0.2em #87F,
+          0 0 0.2em #87F;'>
+		<a id='activity_click'onClick='activity_Button();'>ACTIVITY</a> :
+		<a id="fname" onClick='opacity("aboutme")'> Mr.BANKCHART ARLAI</a>
+          </div>
+	  <!--/label--> 
+	   <center>
+            <!--table id="img_sortable" border='0'style='border-spacing:8px; width: 600px; margin-left: -10px;' >
+            <tr>
+            <td>
+	    <div title='Bank' id='me1'></div>
+            เที่ยวเพลินวาน
+          </td>
+          <td>
+          <div title='Bank' id='me2'></div>
+          แว๊นๆ สักครั้งในชีวิต
+        </td>
+        <td>
+        <div title='Bank' id='me3'></div>
+        เดินป่าที่เกาะช้าง
+      </td>
+      <td>
+      <div title='Bank' id='me4'></div>
+      กลับมาเดินวัด
+    </td>
+
+  </tr>
+  <tr>
+  <td>
+  <a id='education'></a>
+
+  <div title='education' id='edu1'></div>
+  ตราคณะวิศวะ มทร.อีสานน เด้อ
+</td>
+<td>
+<div title='education' id='edu2'></div>
+ตราสาขาติดที่แขนมาจะหกปีแล้ว
+</td>
+<td>
+
+<div title='education' id='edu3'></div>
+ที่นี่งามๆ ทั้งนั้น
+</td>
+<td>
+<div title='education' id='edu4'></div>
+เมื่อไหร่ฉันจะจบเนี่ยยยยยย!!!
+</td>
+</tr>
+<tr>
+<td>
+<a id='favorite'></a>
+<div title='favorite' id='fav1'></div>
+เสียน้ำตาไปกับเอส
+</td>
+<td>
+<div  title='favorite' id='fav2'></div>
+เก่งเกินไปนะ
+</td>
+<td>
+<div  title='favorite' id='fav3'></div>
+รอดูทวีปมืด เฮ้ออออ
+</td>
+<td>
+<div  title='favorite' id='fav4'></div>
+ไปที่ไหนตายที่นั่น
+</td>
+
+</tr>
+<tr>
+<td>
+<a id='littleskill'></a> <div title='littleskill' id='sk1'></div>
+สิวๆ
+</td>
+<td>
+<div title='littleskill' id='sk2'></div>
+จิ๊บๆ
+</td>
+<td>
+<div title='littleskill' id='sk3'></div>
+ชิลๆ
+</td>
+<td>
+<div title='littleskill' id='sk4'></div>
+สบายยยยย T-T
+</td>
+
+</tr>
+</table-->
+<!-- new images -->
+<div id='img_sortable'>
+  <div>
+    <a href="images/profile/user-1/img1-1.jpg" rel="lightbox"><div id='me1'></div></a>
+    <br/> เที่ยวเพลินวาน
+  </div>
+  <div>
+    <a href="images/profile/user-1/img2-1.jpg" rel="lightbox"><div id='me2'></div></a>
+    <br/>  แว๊นๆ สักครั้งในชีวิต
+  </div>
+  <div>
+    <a href="images/profile/user-1/img3-1.jpg" rel="lightbox"><div id='me3'></div></a>
+    <br/> เดินป่าที่เกาะช้าง
+  </div>
+  <div>
+    <a href="images/profile/user-1/img4-1.jpg" rel="lightbox"><div id='me4'></div></a>
+    <br/>  กลับมาเดินวัด
+  </div>
+
+  <div>
+    <a href="images/profile/user-1/rmuti3-1.jpg" rel="lightbox"><div id='edu1'></div></a>
+    <br/>ตราคณะวิศวะ มทร.อีสานน เด้อ
+  </div>
+  <div>
+    <a href="images/profile/user-1/rmuti5-1.jpg" rel="lightbox"><div id='edu2'></div></a>
+    <br/>ตราสาขาติดที่แขนมาจะหกปีแล้ว
+  </div>
+  <div>
+    <a href="images/profile/user-1/rmuti4-1.jpg" rel="lightbox"><div id='edu3'></div></a>
+    <br/> ที่นี่งามๆ ทั้งนั้น
+  </div>
+  <div>
+    <a href="images/profile/user-1/rmuti6-1.jpg" rel="lightbox"><div id='edu4'></div></a>
+    <br/>เมื่อไหร่ฉันจะจบเนี่ยยยยยย!!!
+  </div>
+
+  <div>
+    <a href="images/profile/user-1/fav1-1.jpg" rel="lightbox"><div id='fav1'></div></a>
+    <br/> เสียน้ำตาไปกับเอส
+  </div>
+  <div>
+    <a href="images/profile/user-1/fav2-1.jpg" rel="lightbox"><div id='fav2'></div></a>
+    <br/>เก่งเกินไปนะ
+  </div>
+  <div>
+    <a href="images/profile/user-1/fav3-1.jpg" rel="lightbox"><div id='fav3'></div></a>
+    <br/> รอดูทวีปมืด เฮ้ออออ
+  </div>
+  <div>
+    <a href="images/profile/user-1/fav4-1.jpg" rel="lightbox"><div id='fav4'></div></a>
+    <br/>ไปที่ไหนตายที่นั่น
+  </div>
+
+  <div>
+    <a href="images/profile/user-1/sk1-1.png" rel="lightbox"><div id='sk1'></div></a>
+    <br/> สิวๆ
+  </div>
+  <div>
+    <a href="images/profile/user-1/sk2-1.jpg" rel="lightbox"><div id='sk2'></div></a>
+    <br/>จิ๊บๆ
+  </div>
+  <div>
+    <a href="images/profile/user-1/sk3-1.jpg" rel="lightbox"><div id='sk3'></div></a>
+    <br/>ชิลๆ
+  </div>
+  <div>
+    <a href="images/profile/user-1/sk4-1.jpg" rel="lightbox"><div id='sk4'></div></a>
+    <br/>สบายยยยย T-T
+  </div>
+
+</div>
+
+<br/>
+
+<div style='position: absolute; width: 317px; height: 3px;
+line-height: 50px;
+background: linear-gradient(
+CCC, #FFF);
+left: 130px; top: 1230px;
+'></div>
+
+<div id='footer2' style='
+background-image: url("images/profile/user-1/footer2.gif");
+background-size: 416px 35px;
+width: 416px; top: 1215px; left: 445px;
+position: absolute;
+height: 35px;
+'></div>
+<!--label style='margin-left: 0px; font-family: thaisanslite; color:
+orange; font-size: 30px; font-weight: bold;
+text-shadow: 0 0 0.2em #003366, 0 0 0.2em #87F,
+0 0 0.2em #87F; '>Powered by Bank@Korat</label-->
+
+<div style='display: inline; position: absolute; width: 300px; height: 3px;
+line-height: 50px;
+background: linear-gradient(#CCC ,#FFF); left: 870px; top: 1230px; '></div>
+
+
+</center>
+</div>
+<!--end content-->
+<div id='second_bg'></div>
+<div id='edu' class='detail-dialog'>
+</div>
+<div id='fav' class='detail-dialog'>
+</div>
+<div id='lsk' class='detail-dialog'>
+</div>
+<div id='aboutme' class='detail-dialog' onClick='opacity("out")'>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ชื่อ - สกุล :</b><span class='fullname'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>วันเดือนปีเกิด :</b><span class='birthdate'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ส่วนสูง :</b><span class='height'></span>  cm.
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>น้ำหนัก :</b><span class='weight'></span> kg.
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>กรุ๊ปเลือด :</b><span class='blood_type'></span> B
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>อายุ :</b><span class='age'></span> ปี
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>งานอดิเรก :</b><span class='hobby'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>การศึกษา :</b><span class='education'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>คณะ :</b><span class='faculty'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>สาขา :</b><span class='major'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>เบอร์โทร :</b><span class='phone'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>อีเมล :</b><span class='email'></span>
+  <br/><br/>
+</div>
+
+<!-- auto aboutme -->
+<div id='aboutme_auto' class='detail-dialog' style='display: block;'>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ชื่อ - สกุล :</b><span class='fullname'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>วันเดือนปีเกิด :</b><span class='birthdate'></span> 
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ส่วนสูง :</b><span class='height'></span>  cm.
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>น้ำหนัก :</b><span class='weight'></span> kg.
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>กรุ๊ปเลือด :</b><span class='blood_type'></span> B
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>อายุ :</b><span class='age'></span> ปี
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>งานอดิเรก :</b><span class='hobby'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>การศึกษา :</b><span class='education'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>คณะ :</b><span class='faculty'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>สาขา :</b><span class='major'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>เบอร์โทร :</b><span class='phone'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>อีเมล :</b><span class='email'></span>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' style='color: blue;' onclick='closeAutoAbt()'><ins>view others...click</ins></a>
+</div>
+<div class='detail-dialog' id='editBlock'> 
+     <div>Education</div>
+     <div>
+        <textarea name='edu_edit' id='edu_edit' cols='48' rows='10' style='resize: none'></textarea>
+     </div>
+     <div>Favorite</div>
+     <div> 
+        <textarea name='fav_edit' id='fav_edit' cols='48' rows='10' style='resize: none'></textarea>
+     </div>
+     <div>Little Skill</div> 
+     <div>
+        <textarea name='lsk_edit' id='lsk_edit' cols='48' rows='10' style='resize: none'></textarea>
+     </div>
+     <button onclick='editSave();' id='edit-save'>save</button>
+     <button onclick='editCancel();' id='edit-cancel'>cancel</button>
+</div>
+</body>
+<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/scriptaculous.js"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+</html>
+<script type='text/javascript' src='jquery/jquery.js'></script>
+<script type='text/javascript' src='jquery-ui/jquery-ui.js'></script>
+<script type='text/javascript' src='js/profile.js'></script>
+
+

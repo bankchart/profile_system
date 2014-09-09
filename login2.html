@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>LOGIN PAGE</title>	
+	<style>
+	html, body{
+		margin: 0px;
+		padding: 0px;		
+		width: 100%;
+		height: 100%;
+        }
+	@font-face{    
+		font-family: thaisanslite;
+		src: url('myfont/thaisanslite_r1.ttf');
+	}
+	.mybg{
+		width: 100%;
+		height: 100%;
+		min-width: 1000px;
+		position: absolute;
+		/*background: linear-gradient(to right, #FFF, #4e535c, #FFF);*/
+		background-color: #4e535c;		
+		background-image: url('bg.jpg');
+		background-repeat: no-repeat;
+		background-size: 1301px 100%;
+		width: 1301px;
+		height: 100%;	
+	}
+	.inputBlcok{
+		font-family: thaisanslite;
+		font-size: 25px;
+		box-shadow: 2px 2px 1px #888888;
+		width: 450px;
+		height: 400px;
+		background-color: #f1f2f4;
+		margin: auto;
+		margin-top: 120px;
+		border-radius: 80px;
+		padding: 50px;
+		padding-top: 30px;
+		opacity: 0.9;
+	}
+	.inputLabel{
+		text-align: center;
+	}
+	.inputText{
+		margin-top: 30px;
+		text-align: center;
+	}
+	.inputText input{
+		height: 60px;
+		width: 70%;
+		text-align: center;
+	}
+	.inputText div.imgLabel{
+		display: inline;
+		width: 60px;
+		height: 60px;
+	}
+	#loginBtn{
+		width: 72%;
+		height: 60px;
+		font-weight: bold;
+		font-size: 20px;
+	}
+	#loginBtn:hover{
+		cursor: pointer;
+	}
+	.alert{
+		color: red;
+		margin-left: 10px;
+		line-height: 65px;
+		position: absolute;
+		display: none;
+	}
+	#logout{
+		display: none;
+		text-align: center;
+	}
+	#logout button:hover{
+		cursor: pointer;
+	}
+        /* 
+        .register{
+                position: absolute;
+                background-color: #f1f2f4;
+                width: 250px;
+                height: 100%; 
+                top: 0; 
+                right: 0px; 
+                border-radius: 5px 0px 0px 5px; 
+                padding: 10px; 
+                overflow: hidden; 
+                transition: top 500ms cubic-bezier(0.17, 0.04, 0.03, 0.94);  
+        }	
+        */ 
+        </style>
+</head>
+<body onload='isUser_Online()'>
+	<div class='mybg'>		
+		<div class='inputBlcok'>
+			<div class='inputLabel'>
+				<h2>Let's get started.</h2>
+				<label>This will be an amazing experience</label>
+			</div>
+			<div id='welcome' class='inputText'>
+				<div class='imgLabel'></div>
+				<input name='uname' id='uname' onkeypress='enter(event);' 
+				placeholder="Username" type='text'/>
+				<span id='ua' class='alert'>*null</span><br/>
+				<div class='imgLabel'>
+				</div><input name='pass' id='pass' onkeypress='enter(event);' 
+				placeholder="Password" type='password'/>
+				<span id='pa' class='alert'>*null</span><br/>
+				<button id='loginBtn' onclick='validate();'>Login</button><br/>
+				<div id='btm_alert'></div>				
+			</div>
+			<div id='logout'>
+				<button id='logout_btn' onclick='logout()'>Logout</button>
+			</div>
+		</div>
+                <!--div class='register'>test</div-->	
+        </div>
+</body>
+<script type="text/javascript">
+var username = 'root';
+var password = '1234';
+function isUser_Online(){
+	document.getElementById('uname').value = '';
+	document.getElementById('pass').value = '';
+	var isOnline = getCookie('online');
+	if(isOnline != ''){		
+		document.getElementById('welcome').innerHTML = '.....Welcome ' + username + '.....';
+		document.getElementById('logout').style.display = 'block';
+	}
+}
+function validate(){
+	var un_txt = document.getElementById('uname');
+	var pass_txt = document.getElementById('pass');
+	var un_alert = document.getElementById('ua');
+	var pass_alert = document.getElementById('pa');
+	var btm_alert = document.getElementById('btm_alert');
+	un_alert.style.display = 'none';
+	pass_alert.style.display = 'none';
+	btm_alert.style.display = 'none';
+	if(un_txt.value != "" && pass_txt.value != ""){
+		if(un_txt.value == username && pass_txt.value == password){			
+			document.getElementById('welcome').innerHTML = '.....Welcome ' + username + '.....';
+			document.getElementById('logout').style.display = 'block';
+			setCookie('online', username, 1);
+		}else{
+			btm_alert.style.display = 'block';
+			btm_alert.style.color = 'red';
+			btm_alert.innerHTML = 'Invalid Username or Password.'
+		}	
+	}else{
+		if(un_txt.value == "")
+			un_alert.style.display = 'inline';
+		else
+			un_alert.style.display = 'none';
+		if(pass_txt.value == "")
+			pass_alert.style.display = 'inline';
+		else
+			pass_alert.style.display = 'none';
+	}
+}
+function enter(event){
+	if(event.charCode == 13 || event.keyCode == 13){
+		validate();
+	}
+}
+function logout(){
+	if(confirm('Confirm logout?')){
+		//document.cookie = 'online' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                setCookie("online", "", -1);
+	        window.location.href = "http://www.ezineasp.net"; 
+                //window.location.href="../profile/version5-drag_drop/profile.html";
+	}
+}
+function setCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = cname + "=" + cvalue + "; " + expires;
+} 
+function getCookie(cname) {
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1);
+		if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+	}
+	return "";
+} 
+</script>
+</html>
