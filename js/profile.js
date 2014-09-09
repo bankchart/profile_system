@@ -57,9 +57,10 @@ function getCookie(cname){
         }
 
 // new version
+// *************************************   CODING NOW   ****************************************************
 function isUser_Online(){
   //  localStorage.clear(); 
-    var cnt = JSON.parse(localStorage.getItem('countUser'));
+ /*   var cnt = JSON.parse(localStorage.getItem('countUser'));
     var i;
     if(cnt != null){ 
         cnt = parseInt(cnt); 
@@ -99,6 +100,7 @@ function isUser_Online(){
    }else{//end if cnt != null  
        window.location.href='index.html?logout=true'; 
    }
+*/
 }
 
 function editDetail(){

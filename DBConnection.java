@@ -23,6 +23,7 @@ public class DBConnection {
                 driver = "com.mysql.jdbc.Driver";
                 username = "root";
                 password = "crv1990";
+		connectDB();
 	}
 	public DBConnection(String url, String dbName, String driver, String username, String password){
 		this.url = url;
@@ -30,6 +31,7 @@ public class DBConnection {
 		this.driver = driver;
 		this.username = username;
 		this.password = password;
+		connectDB();
 	}
 	public void connectDB(){
                 try {
@@ -75,15 +77,16 @@ public class DBConnection {
 	}
 	public ResultSet manageData(int num, String sql, Object[] data){
 		try{
-			PreparedStatement pstm;
-			pstm = conn.prepareStatement(sql);
+			PreparedStatement pstm = conn.prepareStatement(sql);
 			prepareSql(data, pstm);	
 			rs = pstm.executeQuery();
+			return rs;
 		}catch(SQLException ex){
 			rs = null;
 			ex.printStackTrace();
+			return rs;
 		}	
-		return rs;
+
 	}
 	public boolean executeData(String sql){
 		boolean isSuccess = false;

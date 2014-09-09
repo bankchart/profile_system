@@ -1,7 +1,4 @@
 // login.js
-//var username = 'root';
-//var password = '1234';
-
 function isUser_Online(){
   document.getElementById('uname').value = '';
   document.getElementById('pass').value = '';
@@ -30,7 +27,21 @@ function validate(){ // login
 
     $.ajax({
 
-        
+  	url : "Login2Profile",
+	data : { username : un_txt.value, password : pass_txt.value },
+	type : "post",
+	success : function(data){
+		// setCookie username & redirect to profile		
+		if(data != 'incorrect'){
+			alert("let go to profile.html");
+			setCookie("online", data, 1);
+			window.location.href = "profile.html";	
+		}else{
+			btm_alert.style.display = 'block';
+			btm_alert.style.color = 'red';
+			btm_alert.innerHTML = 'Invalid Username or Password.';			
+		}	
+	}      
 
     });
 
