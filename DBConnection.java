@@ -1,3 +1,4 @@
+import org.apache.log4j.Logger;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -6,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBConnection {
-
+	private Logger log = Logger.getLogger(DBConnection.class.getName());
 	private String url;
 	private String dbName;
 	private String driver;
@@ -41,41 +42,45 @@ public class DBConnection {
 			stm = conn.createStatement();
                 }catch(Exception ex) {
                         ex.printStackTrace();
+			log.info(ex.getMessage());
                 }
-	}
+}
 	public void closeDB(){
 		try{
 			conn.close();
 		}catch(Exception ex){
 			ex.printStackTrace();
+			log.info(ex.getMessage());
 		}
 	}
 	// protect query sql
 	public void prepareSql(Object[] data, PreparedStatement tmp){
 		try{
-		for(int i=1;i<=data.length;i++)
-			if(data[i-1] instanceof String){
-				tmp.setString(i, (String)data[i-1]);	
-			}else if(data[i-1] instanceof Integer){
-				tmp.setInt(i, (int)data[i-1]);	
+		for(int i=0;i<data.length;i++)
+			if(data[i] instanceof String){
+				tmp.setString(i + 1, (String)data[i]);	
+			}else if(data[i] instanceof Integer){
+				tmp.setInt(i + 1, (int)data[i]);	
 			}else{
-				tmp.setDouble(i, (double)data[i-1]);	
+				tmp.setDouble(i + 1, (double)data[i]);	
 			}		
 		}catch(SQLException ex){
 			ex.printStackTrace();
+			log.info(ex.getMessage());
 		}
 	}
-	// insert, delete, update
+	// select only. 
 	public ResultSet manageData(String sql){
 		try{
 			rs = stm.executeQuery(sql);	
 		}catch(SQLException ex){
 			rs = null;
 			ex.printStackTrace();
+			log.info(ex.getMessage());
 		}
 		return rs;
 	}
-	public ResultSet manageData(int num, String sql, Object[] data){
+	public ResultSet manageData(String sql, Object[] data){
 		try{
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			prepareSql(data, pstm);	
@@ -84,17 +89,20 @@ public class DBConnection {
 		}catch(SQLException ex){
 			rs = null;
 			ex.printStackTrace();
+			log.info(ex.getMessage());
 			return rs;
 		}	
 
 	}
+	// insert update delete
 	public boolean executeData(String sql){
-		boolean isSuccess = false;
 		try{
-			isSuccess = stm.execute(sql);	
+		        stm.execute(sql);	
+			return true;
 		}catch(SQLException ex){
 			ex.printStackTrace();
+			log.info(ex.getMessage());
+			return false;
 		}
-		return isSuccess;
 	}
 }

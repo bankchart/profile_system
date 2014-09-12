@@ -1,18 +1,13 @@
 import java.sql.ResultSet; 
+import java.sql.Connection;
+import java.sql.Statement;
 
 public class CodeTest {
 	public static void main(String[]args){
 		DBConnection conn = new DBConnection();
 		ResultSet rs;
 		conn.connectDB();
-		String sql = "SELECT * FROM member_tb WHERE username = ? AND password = ?";
-		rs = conn.manageData(2, sql, new Object[]{"uname1", "pass1"});	
-		try{
-		while(rs.next())
-			println(rs.getString("username") + " | " + rs.getString("password"));
-		}catch(java.sql.SQLException ex){
-			ex.printStackTrace();
-		}
+		String sql = "INSERT INTO member_tb (userid, username, password, fullname) values (null, \"uname4\", \"pass4\", \"sompong\");";
 		conn.closeDB();
 	}
 	public static void println(String str){

@@ -59,48 +59,7 @@ function getCookie(cname){
 // new version
 // *************************************   CODING NOW   ****************************************************
 function isUser_Online(){
-  //  localStorage.clear(); 
- /*   var cnt = JSON.parse(localStorage.getItem('countUser'));
-    var i;
-    if(cnt != null){ 
-        cnt = parseInt(cnt); 
-        for(i = 1 ; i <= cnt ; i++){
-              var tmp = JSON.parse(localStorage.getItem('user-' + i));
-              if(getCookie('online') == tmp.username){
-                   document.getElementById('fname').innerHTML = tmp.fullname;
-                   $('.fullname').text(' ' + tmp.fullname); 
-            	   $('.birthdate').text(' ' + tmp.birthdate);
-            	   $('.height').text(' ' + tmp.height); 
-            	   $('.weight').text(' ' + tmp.weight); 
-            	   $('.blood_type').text(' ' + tmp.blood_type); 
-            	   $('.age').text(' ' + tmp.age); 
-            	   $('.hobby').text(' ' + tmp.hobby); 
-            	   $('.education').text(' ' + tmp.education);
-            	   $('.faculty').text(' ' + tmp.faculty); 
-            	   $('.major').text(' ' + tmp.major); 
-            	   $('.phone').text(' ' + tmp.phone); 
-            	   $('.email').text(' ' + tmp.email); 
-            	   if(tmp.detail_edu == '') 
-                         $('#edu').text('click edit button for add detail.'); 
-                   else
-                         $('#edu').html(tmp.detail_edu); 
-                   if(tmp.detail_fav == '')
-                         $('#fav').text('click edit button for add detail.');
-                   else 
-                         $('#fav').html(tmp.detail_fav);
-		   if(tmp.detail_littleskill == '')
-                         $('#lsk').text('click edit button for add detail.');
-                   else 
-                         $('#lsk').html(tmp.detail_littleskill); 
-                   break;
-             }else if(i == cnt){
-	            window.location.href='index.html?logout=true';
-             }
-        }
-   }else{//end if cnt != null  
-       window.location.href='index.html?logout=true'; 
-   }
-*/
+	
 }
 
 function editDetail(){
@@ -160,3 +119,4 @@ function activity_Button(){
           img_toggle = true;
      }
 }
+
