@@ -5,7 +5,7 @@
 
 }
 #edu1{
-  background-image: url('../images/profile/user-1/rmuti3-2.jpg');
+  background-image: url('../images/profile/user-1/coming-soon.gif');
   background-size: 230px 200px;
   width: 230px;
   height: 200px;
@@ -377,8 +377,8 @@ button{
   cursor: pointer;
 }
 #editBlock{
-  height: 990px;
-
+  height: 480px;
+  overflow: auto;
 }
 textarea {
    font-size: 20px;
@@ -396,4 +396,78 @@ font-weight: bold;
 #fname:hover{
 	cursor: pointer;
 }
+#activity_click:hover{
+	cursor: pointer;
+}
 
+/* css for member list */
+#viewer{
+	height: 100%;
+	width: 100%;
+}
+#viewer-header{
+	background-color: #006699;
+	height: 50px;
+	display: table-row;
+}
+#viewer-header div{
+	vertical-align: middle;
+	text-align: center;
+	border: 0px;
+	border-left: 1px solid #DFECF2;
+	border-right: 1px solid #DFECF2;
+	color: #FFF;
+	font-weight: bold;
+}
+.table{
+	display : table;
+	border-spacing: 0px;
+	margin: auto auto;
+	border-collapse: collapse;
+	margin-top: 50px;
+}
+.table-row:nth-child(2n){
+	display : table-row;
+	background-color: #CCC;
+}
+.table-row{
+	display: table-row;
+}
+.table-col{
+	display : table-cell;
+	width: 160px;
+	height: 30px;
+	border-left: 1px solid #DFECF2;
+	border-right: 1px solid #DFECF2;
+	padding-left: 10px;
+	vertical-align: middle;
+}
+.table-col div a{
+	color: blue;
+}
+.table-col div{
+	text-align: center;
+}
+#save-career{
+	float: right;
+	margin-right: 38px;
+	font-size: 18px;
+	margin-top: 20px;
+}
+#save-career:hover{
+	cursor: pointer;
+}
+#empty{
+	position: absolute;
+	margin: auto auto;
+	margin-top: 5;
+	width: 93%;
+}
+
+.table #empty{
+	text-align: center;
+}
+#viewer-bg{
+	background-image : url("../images/profile/user-1/bg2.png");
+}
+/* css for member list */

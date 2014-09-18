@@ -7,6 +7,8 @@ $("#submitx").click(function(){
 
 });
 */
+
+
 function isUser_Online(){
   document.getElementById('uname').value = '';
   document.getElementById('pass').value = '';
@@ -32,27 +34,31 @@ function validate(){ // login
   btm_alert.style.display = 'none';
   if(un_txt.value != "" && pass_txt.value != ""){
     // validate by jsp & mysql -- begin
+ 	        $.ajax({
 
-    $.ajax({
+                url : "Login2Profile",
+                type : "post",  
+		async : false,
+                data : {
+                       mode : "login",
+                       username : $("#uname").val(),
+                       password : $("#pass").val()
+                       },
+                success : function(data){
+                        if(data != "incorrect"){
+				localStorage.setItem("userOnline", $("#uname").val());	
+				window.location.href = "Profile?mode=login";
+                        }else{
+				btm_alert.innerHTML = "Invalid Username or Password";
+				btm_alert.style.display = "block";
+				btm_alert.style.color = "red";
+			}
+//			alert("user online : " + localStorage.getItem("userOnline"));
+                }       
 
-  	url : "Login2Profile",
-	data : { username : un_txt.value, password : pass_txt.value, mode : "login" },
-	type : "post",
-	success : function(data){
-		// setCookie username & redirect to profile		
-		if(data != 'incorrect'){
-			alert("let go to profile.html");
-			setCookie("online", data, 1);
-			window.location.href = "profile.html";	
-		}else{
-			btm_alert.style.display = 'block';
-			btm_alert.style.color = 'red';
-			btm_alert.innerHTML = 'Invalid Username or Password.';			
-		}	
-	}      
+        });
 
-    });
-
+ 
 
 
   }else{
@@ -68,9 +74,9 @@ function validate(){ // login
 }
 
 function enter(event){
-    localStorage.clear();
+    //localStorage.clear();
   if(event.charCode == 13 || event.keyCode == 13){
-    //validate();
+    validate();
   }
 }
 
@@ -102,7 +108,7 @@ function getCookie(cname) {
 /*addEventListener*/
 
 var uname_required = document.getElementById('username');
-uname_required.addEventListener('blur', function(){
+uname_required.addEventListener('keyup', function(){
     var display = 'display : ';
     if(this.value == '')
         display += 'inline';
@@ -111,7 +117,7 @@ uname_required.addEventListener('blur', function(){
     document.getElementById('req_uname').style = display;
 });
 var pwd_required = document.getElementById('passwd');
-pwd_required.addEventListener('blur', function(){
+pwd_required.addEventListener('keyup', function(){
     var display = 'display : ';
     if(this.value == '')
         display += 'inline';
@@ -120,7 +126,7 @@ pwd_required.addEventListener('blur', function(){
     document.getElementById('req_pwd').style = display;
 });
 var repwd_required = document.getElementById('repasswd');
-repwd_required.addEventListener('blur', function(){
+repwd_required.addEventListener('keyup', function(){
     var display = 'display : ';
     if(this.value == '')
         display += 'inline';
@@ -129,7 +135,7 @@ repwd_required.addEventListener('blur', function(){
     document.getElementById('req_repwd').style = display;
 });
 var fname_required = document.getElementById('fullname');
-fname_required.addEventListener('blur', function(){
+fname_required.addEventListener('keyup', function(){
     var display = 'display : ';
     if(this.value == '')
         display += 'inline';
@@ -151,8 +157,8 @@ function mysubmit(){
 
         var data_required = ['', '', '', '', '', '',
                              '', '', '', '', '', '',
-                             '', '', '', '', '', ''];
-	var data_required_value = ['', '', '', '', '', '',
+                             '', '', '', '', ''];
+	var data_required_value = ['', '', '', '', '',
                              '', '', '', '', '', '',
                              '', '', '', '', '', ''];
 
@@ -164,10 +170,9 @@ function mysubmit(){
         data_required[5] = document.getElementById('height');
         data_required[6] = document.getElementById('weight');
         data_required[7] = document.getElementById('blood-type'); 
-        data_required[8] = document.getElementById('age');
-        data_required[9] = document.getElementById('hobby');
-	data_required[10] = document.getElementById('education');
-        data_required[11] = document.getElementById('faculty');
+        data_required[8] = document.getElementById('hobby');
+	data_required[9] = document.getElementById('education');
+        data_required[10] = document.getElementById('faculty');
         
         data_required_value[0] = document.getElementById('username').value; // required
         data_required_value[1] = document.getElementById('passwd').value; // required 
@@ -177,16 +182,15 @@ function mysubmit(){
         data_required_value[5] = document.getElementById('height').value;
         data_required_value[6] = document.getElementById('weight').value;
         data_required_value[7] = document.getElementById('blood-type').value; 
-        data_required_value[8] = document.getElementById('age').value;
-        data_required_value[9] = document.getElementById('hobby').value;
-        data_required_value[10] = document.getElementById('education').value;
-        data_required_value[11] = document.getElementById('faculty').value;
-        data_required_value[12] = document.getElementById('major').value;
-        data_required_value[13] = document.getElementById('phone').value;
-        data_required_value[14] = document.getElementById('email').value; 
-	data_required_value[12] = document.getElementById('major').value;
-        data_required_value[13] = document.getElementById('phone').value;
-        data_required_value[14] = document.getElementById('email').value; 
+        data_required_value[8] = document.getElementById('hobby').value;
+        data_required_value[9] = document.getElementById('education').value;
+        data_required_value[10] = document.getElementById('faculty').value;
+        data_required_value[11] = document.getElementById('major').value;
+        data_required_value[12] = document.getElementById('phone').value;
+        data_required_value[13] = document.getElementById('email').value; 
+	data_required_value[14] = document.getElementById('major').value;
+        data_required_value[15] = document.getElementById('phone').value;
+        data_required_value[16] = document.getElementById('email').value; 
         
 		
  
@@ -204,7 +208,7 @@ function mysubmit(){
         if(requiredReg){
 
             //checking username no-repeat ?
-		alert("inside if check repeat.");
+//		alert("inside if check repeat.");
 		$.ajax({
 			url : "Login2Profile",
 			dataType : "text",
@@ -229,10 +233,35 @@ function mysubmit(){
                     data_required[2].value = '';
                     document.getElementById('req_pwd').style = 'display : inline';
                     document.getElementById('req_repwd').style = 'display : inline';
-  
               }else{
 				
-						
+			$.ajax({
+
+				url : "Login2Profile",
+				type : "post",
+				data : {
+					mode : "register", 
+					username : data_required[0].value,
+		                        passwd : data_required[1].value,
+                		        fullname : data_required[3].value,
+                        		birthdate : data_required[4].value,
+                        		height : data_required[5].value,
+                       			weight : data_required[6].value,
+                        		blood_type : data_required[7].value,
+                        		hobby : data_required[8].value,
+                        		education : data_required[9].value,
+                        		faculty : data_required[10].value,
+                        		major : data_required[11].value,
+                        		phone : data_required[12].value,
+                        		email : data_required[13].value
+				},
+				success : function(data){
+					alert(data);
+				}
+
+
+			});
+			return true;		
   /*                  var data = {
                         'num' : parseInt(cnt) + 1,
                         'username' : data_required[0].value,
@@ -259,7 +288,7 @@ function mysubmit(){
                     window.location.reload();
     */
 	            }
-			return true;
+			return false;
             }else{
                 // username repeat....
                 alert('username repeat....');
@@ -270,12 +299,11 @@ function mysubmit(){
 		return false;
         }
 
-
 }
-
+// not use.
 function enterOnReg(event){
   if(event.charCode == 13 || event.keyCode == 13){
-    alert("submit");
+ //   alert("submit");
     //mysubmit();
   }
 }

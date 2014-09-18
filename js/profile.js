@@ -32,14 +32,14 @@ function getCookie(cname){
 
         function logout(){
             if(confirm('Confirm logout?')){
-                document.cookie = 'online' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                //document.cookie = 'online' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 // setCookie("online", "", -1);
                 //  setTimeout('loginPage()', 1000);
                 loginPage();
             }
         }
         function loginPage(){
-            window.location.href='index.html?logout=true';
+            window.location.href='Profile?mode=logout';
         }
 
         function opacity(mid){
@@ -63,26 +63,11 @@ function isUser_Online(){
 }
 
 function editDetail(){
-    var cnt = JSON.parse(localStorage.getItem('countUser'));
-    var i;
-    if(cnt != null){
-        cnt = parseInt(cnt);
-        for(i = 1 ; i <= cnt ; i++){
-              var tmp = JSON.parse(localStorage.getItem('user-' + i));
-              if(getCookie('online') == tmp.username){
-                 $('textarea[name=edu_edit]').html(tmp.detail_edu);
-                 document.getElementById('fav_edit').innerHTML = tmp.detail_fav;
-                 document.getElementById('lsk_edit').innerHTML = tmp.detail_littleskill;
-                 document.getElementById('editBlock').style = 'display: block;';
-                     
-                 break; 
-              }
-        }
-    }  
+	document.getElementById('editBlock').style = 'display: inline';	
 }
 
 function editCancel(){
-   document.getElementById('editBlock').style='display: none;';
+   document.getElementById('editBlock').style = 'display: none;';
 }
 
 function editSave(){
@@ -119,4 +104,18 @@ function activity_Button(){
           img_toggle = true;
      }
 }
+// admin
+function adminButton(){
+	window.location.href = "Profile?mode=adminviewer";
+}
+function careerSearch(){
+	window.location.href = "Profile?mode=adminviewer&career=" + document.getElementById("selectCareer").value;
+}
+$('#birthdate').datepicker({
+  changeMonth: true,
+  changeYear: true,
+  dateFormat: 'dd/mm/yy',
+  //defaultDate: new Date(01, 00, 1990),
+  yearRange: "-80:+80"
+});
 
