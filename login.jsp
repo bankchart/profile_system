@@ -34,7 +34,7 @@
 			</div>
 			<div id='register'>
 				<p id='labelRegister'>create your profile account</p>
-				<form method="post" onsubmit="return mysubmit();" action="Login2Profile">
+				<form method="post" onsubmit="return mysubmit();" action="Login2ProfileController">
 				<input type="hidden" name="mode" value="register" />
 				<div class='table'>
 					<div class='table-row'>

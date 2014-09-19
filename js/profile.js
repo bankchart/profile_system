@@ -39,7 +39,7 @@ function getCookie(cname){
             }
         }
         function loginPage(){
-            window.location.href='Profile?mode=logout';
+            window.location.href='ProfileController?mode=logout';
         }
 
         function opacity(mid){
@@ -106,10 +106,10 @@ function activity_Button(){
 }
 // admin
 function adminButton(){
-	window.location.href = "Profile?mode=adminviewer";
+	window.location.href = "ProfileController?mode=adminviewer";
 }
 function careerSearch(){
-	window.location.href = "Profile?mode=adminviewer&career=" + document.getElementById("selectCareer").value;
+	window.location.href = "ProfileController?mode=adminviewer&career=" + document.getElementById("selectCareer").value;
 }
 $('#birthdate').datepicker({
   changeMonth: true,

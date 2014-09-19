@@ -13,9 +13,9 @@
 	int cols = (int)request.getAttribute("cols");
 %>
 	<div id="viewer">
-	<form method="post" action="Profile">
+	<form method="post" action="ProfileController">
 	<div class='table'>
-		<button onclick="window.location.href='Profile'" type="button">back to Admin Profile</button>
+		<button onclick="window.location.href='ProfileController'" type="button">back to Admin Profile</button>
 		<br/>
 		<br/> 
 		<span>
@@ -46,7 +46,7 @@
                         <div class='table-col'><%= allMember[i][2] %></div>
                         <div class='table-col'><%= allMember[i][3] %></div>
                         <div class='table-col'><%= allMember[i][4] %></div>
-			<div class='table-col'><div><a href='Profile?view=<%= allMember[i][0] %>'>view</a></div></div>
+			<div class='table-col'><div><a href='ProfileController?view=<%= allMember[i][0] %>'>view</a></div></div>
 			<div class='table-col'>
 				<div>
 				<select name="career">
@@ -68,5 +68,5 @@
 	</div><!--viewer-->
 </body>
 </html>
-<script type='text/javascript' src="js/jquery.js"></script>
+<script type='text/javascript' src="jquery/jquery.js"></script>
 <script type="text/javascript" src="js/profile.js"></script>

@@ -36,7 +36,7 @@ function validate(){ // login
     // validate by jsp & mysql -- begin
  	        $.ajax({
 
-                url : "Login2Profile",
+                url : "Login2ProfileController",
                 type : "post",  
 		async : false,
                 data : {
@@ -45,14 +45,16 @@ function validate(){ // login
                        password : $("#pass").val()
                        },
                 success : function(data){
+		//	alert("rows : " + data);
                         if(data != "incorrect"){
 				localStorage.setItem("userOnline", $("#uname").val());	
-				window.location.href = "Profile?mode=login";
+				window.location.href = "ProfileController?mode=login";
                         }else{
 				btm_alert.innerHTML = "Invalid Username or Password";
 				btm_alert.style.display = "block";
 				btm_alert.style.color = "red";
 			}
+			
 //			alert("user online : " + localStorage.getItem("userOnline"));
                 }       
 
@@ -210,7 +212,7 @@ function mysubmit(){
             //checking username no-repeat ?
 //		alert("inside if check repeat.");
 		$.ajax({
-			url : "Login2Profile",
+			url : "Login2ProfileController",
 			dataType : "text",
 			async : false,
 			data : {
@@ -237,7 +239,7 @@ function mysubmit(){
 				
 			$.ajax({
 
-				url : "Login2Profile",
+				url : "Login2ProfileController",
 				type : "post",
 				data : {
 					mode : "register", 
@@ -288,6 +290,7 @@ function mysubmit(){
                     window.location.reload();
     */
 	            }
+B
 			return false;
             }else{
                 // username repeat....

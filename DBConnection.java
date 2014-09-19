@@ -101,6 +101,7 @@ public class DBConnection {
 			return true;
 		}catch(SQLException ex){
 			ex.printStackTrace();
+			log.info("sql = " + sql);
 			log.info("SQL ERROR : >>>>>>> " + ex.getMessage());
 			return false;
 		}
